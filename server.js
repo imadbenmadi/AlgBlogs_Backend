@@ -8,6 +8,7 @@ app.use(cors({ credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(express.static(path.join(__dirname, "Public")));
 
 mongoose.set("strictQuery", false);
 const mongoDB = "mongodb://127.0.0.1:27017/AlgBlogs";
@@ -21,8 +22,8 @@ connect_to_db().catch((err) => console.log(err));
 
 
 
-app.use("/Login", require("./api/Auth/Login"));
-app.use("/Signup", require("./api/Auth/SignUp"));
+app.use("/Login", require("./api/Auth/login"));
+app.use("/Signup", require("./api/Auth/Signup"));
 app.use("/Logout", require("./api/Auth/LogOut"));
 // -------------------------------------------------------
 // app.use("/GetAllUsers", require("./api/User/GetAllUsers"));
