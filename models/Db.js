@@ -22,18 +22,26 @@ const Users = mongoose.model(
 const Blogs = mongoose.model(
     "Blogs",
     new mongoose.Schema({
-        Owner: { type: mongoose.Types.ObjectId, ref: "Users" },
-        pics: [{ data: Buffer, contentType: String }],
-        Content: {type:String },
-        Likes: [
+        owner: { type: mongoose.Types.ObjectId, ref: "Users" },
+        content: [
             {
-                type: String,
-                enum: ["man", "woman"],
-                userId: mongoose.Types.ObjectId,
-                ref: "Users",
+                type: { type: String, enum: ["text", "image", "link"] },
+                data: { type: String, default: null }, // You can store the text or URL of the image
             },
         ],
-        Comments: [{ type: mongoose.Types.ObjectId, ref: "Users" }],
+        likes: [
+            {
+                type: String,
+                enum: ["❤️", "👍"], // Include emojis in likes enum
+                userId: { type: mongoose.Types.ObjectId, ref: "Users" },
+            },
+        ],
+        comments: [
+            {
+                userId: { type: mongoose.Types.ObjectId, ref: "Users" },
+                content: { type: String },
+            },
+        ],
     })
 );
 
