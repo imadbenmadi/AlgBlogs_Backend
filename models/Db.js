@@ -16,7 +16,6 @@ const Users = mongoose.model(
             { blogId: { type: mongoose.Types.ObjectId, ref: "Blogs" } },
         ],
         Follow: [{ userId: { type: mongoose.Types.ObjectId, ref: "Users" } }],
-        // Liked_blogs: [{ blogId: { type: mongoose.Types.ObjectId, ref: "Blogs" } }],
     })
 );
 // -------------------------------------------------------
@@ -24,6 +23,8 @@ const Blogs = mongoose.model(
     "Blogs",
     new mongoose.Schema({
         Owner: { type: mongoose.Types.ObjectId, ref: "Users" },
+        pics: [{ data: Buffer, contentType: String }],
+        Content: {type:String },
         Likes: [
             {
                 type: String,
