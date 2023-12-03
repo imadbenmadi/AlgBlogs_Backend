@@ -10,8 +10,8 @@ const Users = mongoose.model(
         Password: { type: String, required: true },
         Age: { type: Number },
         Gender: { type: String, enum: ["man", "woman"] },
-        Profile_Pic: { data: Buffer, contentType: String },
-        
+        Profile_Pic: { type: String },
+
         Saved_blogs: [
             { blogId: { type: mongoose.Types.ObjectId, ref: "Blogs" } },
         ],

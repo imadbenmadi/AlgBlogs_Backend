@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-
+const path = require("path")
 const app = express();
 app.use(cors({ credentials: true }));
 app.use(express.json());
@@ -14,8 +14,8 @@ mongoose.set("strictQuery", false);
 const mongoDB = "mongodb://127.0.0.1:27017/AlgBlogs";
 async function connect_to_db() {
     await mongoose.connect(mongoDB, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
+        // useNewUrlParser: true,
+        // useUnifiedTopology: true,
     });
 }
 connect_to_db().catch((err) => console.log(err));
@@ -24,7 +24,7 @@ connect_to_db().catch((err) => console.log(err));
 
 app.use("/Login", require("./api/Auth/login"));
 app.use("/Signup", require("./api/Auth/Signup"));
-app.use("/Logout", require("./api/Auth/LogOut"));
+// app.use("/Logout", require("./api/Auth/LogOut"));
 // -------------------------------------------------------
 // app.use("/GetAllUsers", require("./api/User/GetAllUsers"));
 // app.use("/GetUserById", require("./api/User/GetUserById"));
