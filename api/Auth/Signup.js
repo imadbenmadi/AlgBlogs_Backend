@@ -45,7 +45,6 @@ router.post("/", upload.single("ProfilePic"), async (req, res) => {
         }
 
         const profilePicPath = req.uploadedFileName;
-        console.log(profilePicPath);
         const newUser = new Users({
             Name: Name,
             UserName: UserName,
