@@ -38,8 +38,8 @@ router.post("/", async (req, res, next) => {
 function generateToken(userId, type) {
     const secret =
         type === "access"
-            ? process.env.ACCESS_TOKEN_SECRET
-            : process.env.REFRESH_TOKEN_SECRET;
+            ? "hello"
+            : "horld";
     const expiresIn = type === "access" ? "15m" : "7d"; // Adjust token lifetimes as needed
 
     return jwt.sign({ userId }, secret, { expiresIn });
