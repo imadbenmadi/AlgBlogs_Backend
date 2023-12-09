@@ -22,7 +22,10 @@ connect_to_db().catch((err) => console.log(err));
 app.use("/Login", require("./api/Auth/Login"));
 app.use("/Signup", require("./api/Auth/Signup"));
 app.use("/Logout", require("./api/Auth/Logout"));
-app.use("/Blogs", require("./api/Blogs/Get_Blogs"));
+app.use("/AuthStatus",require("./api/Auth/AuthStatus"));
+
+
+app.use("/Blogs", require("./api/Blogs/Blogs"));
 
 
 
