@@ -4,7 +4,6 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs").promises; // Use the promise version of fs
 const { Users } = require("../../models/Db");
-
 const storage = multer.diskStorage({
     destination: async (req, file, cb) => {
         const uploadPath = path.join(__dirname, "../../Public/Profilepics");

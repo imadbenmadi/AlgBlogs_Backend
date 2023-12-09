@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 const { Users } = require("../../models/Db");
+require("dotenv").config();
 
 router.post("/", async (req, res, next) => {
     try {
@@ -38,9 +39,9 @@ router.post("/", async (req, res, next) => {
 function generateToken(userId, type) {
     const secret =
         type === "access"
-            ? "hello"
-            : "horld";
-    const expiresIn = type === "access" ? "15m" : "7d"; // Adjust token lifetimes as needed
+            ? process.env.ACCESS_TOKEN_SECRET
+            : REFRESH_TOKEN_SECRET;
+    const expiresIn = type === "access" ? "15m" : "7d"; 
 
     return jwt.sign({ userId }, secret, { expiresIn });
 }
