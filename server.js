@@ -13,10 +13,7 @@ app.use(express.static(path.join(__dirname, "Public")));
 mongoose.set("strictQuery", false);
 const mongoDB = "mongodb://127.0.0.1:27017/AlgBlogs";
 async function connect_to_db() {
-    await mongoose.connect(mongoDB, {
-        // useNewUrlParser: true,
-        // useUnifiedTopology: true,
-    });
+    await mongoose.connect(mongoDB, {});
 }
 connect_to_db().catch((err) => console.log(err));
 
@@ -25,6 +22,16 @@ connect_to_db().catch((err) => console.log(err));
 app.use("/Login", require("./api/Auth/Login"));
 app.use("/Signup", require("./api/Auth/Signup"));
 app.use("/Logout", require("./api/Auth/Logout"));
+app.use("/Blogs", require("./api/Blogs/Get_Blogs"));
+
+
+
+
+
+
+
+
+
 // -------------------------------------------------------
 // app.use("/GetAllUsers", require("./api/User/GetAllUsers"));
 // app.use("/GetUserById", require("./api/User/GetUserById"));
