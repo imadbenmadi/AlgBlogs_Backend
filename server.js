@@ -22,9 +22,9 @@ connect_to_db().catch((err) => console.log(err));
 
 
 
-app.use("/Login", require("./api/Auth/login"));
+app.use("/Login", require("./api/Auth/Login"));
 app.use("/Signup", require("./api/Auth/Signup"));
-// app.use("/Logout", require("./api/Auth/LogOut"));
+app.use("/Logout", require("./api/Auth/Logout"));
 // -------------------------------------------------------
 // app.use("/GetAllUsers", require("./api/User/GetAllUsers"));
 // app.use("/GetUserById", require("./api/User/GetUserById"));
